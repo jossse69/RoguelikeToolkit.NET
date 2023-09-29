@@ -10,17 +10,17 @@ namespace RoguelikeToolkit.NET.Drawing
         /// <summary>
         /// Gets or sets the character (glyph) to be displayed.
         /// </summary>
-        public char Glyph { get; set; }
+        public char? Glyph { get; set; }
 
         /// <summary>
         /// Gets or sets the foreground color of the glyph.
         /// </summary>
-        public Color ForegroundColor { get; set; }
+        public Color? ForegroundColor { get; set; }
 
         /// <summary>
         /// Gets or sets the background color behind the glyph.
         /// </summary>
-        public Color BackgroundColor { get; set; }
+        public Color? BackgroundColor { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ColoredGlyph"/> class with the specified glyph, foreground color, and background color.
@@ -28,7 +28,7 @@ namespace RoguelikeToolkit.NET.Drawing
         /// <param name="glyph">The character (glyph) to be displayed.</param>
         /// <param name="foregroundColor">The foreground color of the glyph.</param>
         /// <param name="backgroundColor">The background color behind the glyph.</param>
-        public ColoredGlyph(char glyph, Color foregroundColor, Color backgroundColor)
+        public ColoredGlyph(char? glyph, Color? foregroundColor, Color? backgroundColor)
         {
             Glyph = glyph;
             ForegroundColor = foregroundColor;

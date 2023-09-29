@@ -124,14 +124,14 @@ namespace RoguelikeToolkit.NET.Drawing
             if (font.IsRowMajor)
             {
                 // Calculate texture coordinates for row-major layout.
-                texX = glyph.Glyph % font.GlyphsPerRow;
-                texY = glyph.Glyph / font.GlyphsPerRow;
+                texX = (float)glyph.Glyph % font.GlyphsPerColumn;
+                texY = (float)glyph.Glyph / font.GlyphsPerRow;
             }
             else
             {
                 // Calculate texture coordinates for column-major layout.
-                texX = glyph.Glyph / font.GlyphsPerColumn;
-                texY = glyph.Glyph % font.GlyphsPerColumn;
+                texX = (float)glyph.Glyph / font.GlyphsPerColumn;
+                texY = (float)glyph.Glyph % font.GlyphsPerRow;
             }
 
             // Calculate the position and size of the glyph in the texture.
@@ -159,10 +159,10 @@ namespace RoguelikeToolkit.NET.Drawing
             };
 
             // Set the color modulation for the font texture (glyph color).
-            SDL.SDL_SetTextureColorMod(fontTexture, glyph.ForegroundColor.R, glyph.ForegroundColor.G, glyph.ForegroundColor.B);
+            SDL.SDL_SetTextureColorMod(fontTexture, (byte)glyph.ForegroundColor.Value.R, (byte)glyph.ForegroundColor.Value.G, (byte)glyph.ForegroundColor.Value.B);
 
             // Set the color for rendering the background (bg color).
-            SDL.SDL_SetRenderDrawColor(SDLRenderer, glyph.BackgroundColor.R, glyph.BackgroundColor.G, glyph.BackgroundColor.B, 255);
+            SDL.SDL_SetRenderDrawColor(SDLRenderer, (byte)glyph.BackgroundColor.Value.R, (byte)glyph.BackgroundColor.Value.G, (byte)glyph.BackgroundColor.Value.B, 255);
 
             // Fill the background rectangle with the bg color.
             SDL.SDL_RenderFillRect(SDLRenderer, ref bgRect);

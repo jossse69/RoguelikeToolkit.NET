@@ -41,6 +41,14 @@ namespace RoguelikeToolkit.NET.Drawing
             Height = height;
             Font = font;
             grid = new ColoredGlyph[width, height];
+
+            for (var x = 0; x < width; x++)
+            {
+                for (var y = 0; y < height; y++)
+                {
+                    grid[x, y] = new ColoredGlyph(' ', Color.Black, Color.Black);
+                }
+            }
         }
 
         /// <summary>
@@ -55,7 +63,24 @@ namespace RoguelikeToolkit.NET.Drawing
             if (x < 0 || x >= Width || y < 0 || y >= Height)
                 throw new ArgumentOutOfRangeException("Invalid position.");
 
-            grid[x, y] = glyph;
+            var glyph2 = grid[x, y];
+
+            if (glyph.ForegroundColor != null)
+            {
+                glyph2.ForegroundColor = glyph.ForegroundColor;
+            }
+
+            if (glyph.BackgroundColor != null)
+            {
+                glyph2.BackgroundColor = glyph.BackgroundColor;
+            }
+
+            if (glyph.Glyph != null)
+            {
+                glyph2.Glyph = glyph.Glyph;
+            }
+
+            grid[x, y] = new ColoredGlyph(glyph2.Glyph, glyph2.ForegroundColor, glyph2.BackgroundColor);
         }
 
         /// <summary>

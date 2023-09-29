@@ -88,7 +88,7 @@ namespace RoguelikeToolkit.NET.Drawing
             }
             else
             {
-                GlyphsPerRow = TextureWidth / glyphHeight;
+                GlyphsPerRow = TextureHeight / glyphHeight;
                 GlyphsPerColumn = TextureWidth / glyphWidth;
             }
 
